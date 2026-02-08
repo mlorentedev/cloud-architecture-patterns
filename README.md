@@ -1,6 +1,6 @@
 # Cloud Architecture Patterns
 
-A curated collection of 15 Java/Spring Boot projects exploring cloud architecture patterns, microservices, serverless, and distributed systems. Built during a Master's in Cloud Architecture (MCA) program.
+A curated collection of 15 Java/Spring Boot projects exploring cloud architecture patterns, microservices, serverless, and distributed systems. Built during a Master's in Cloud Native Applications Dev (MCA) program in URJC.
 
 ## Projects
 
