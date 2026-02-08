@@ -1,0 +1,134 @@
+services:
+  mysql:
+    image: mysql:8.0
+    hostname: mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=eoloplantsDB
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-p$MYSQL_ROOT_PASSWORD"]
+      interval: 5s
+      timeout: 5s
+      start_period: 10s
+      retries: 5
+    restart: always
+
+  mongo:
+    image: mongo:5.0-focal
+    hostname: mongodb
+    environment:
+      - MONGO_PORT=27017
+      - MONGO_HOST=mongodb
+      - MONGO_INITDB_DATABASE=topoDB
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password     
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/mongo:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      start_period: 10s
+      retries: 5      
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3.11-management
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=password 
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
+    healthcheck:
+      test: [ "CMD", "rabbitmq-diagnostics", "check_port_connectivity" ]
+      interval: 5s
+      timeout: 5s
+      start_period: 10s
+      retries: 5
+    restart: always
+
+  server:
+    image: manloralm/server:v0.1
+    hostname: server
+    environment:
+      - QUARKUS_DATASOURCE_DB_KIND=mysql
+      - QUARKUS_DATASOURCE_JDBC_URL=jdbc:mysql://mysql/eoloplantsDB
+      - QUARKUS_DATASOURCE_USERNAME=root
+      - QUARKUS_DATASOURCE_PASSWORD=password
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=root
+      - RABBITMQ_PASSWORD=password 
+    ports:
+      - 8080:8080
+    depends_on:
+      mysql:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: on-failure
+    
+  weatherservice:
+    image: manloralm/weatherservice:v0.1
+    hostname: weatherservice
+    environment:
+      - QUARKUS_GRPC_SERVER_HOST=weatherservice
+      - QUARKUS_GRPC_SERVER_PORT=9090
+    ports:
+      - 9090:9090
+    restart: on-failure
+  
+  toposervice:
+    image: manloralm/toposervice:v0.1
+    hostname: toposervice
+    environment:
+      - TOPO_PORT=8181
+      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=topoDB
+      - SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE=admin
+      - SPRING_DATA_MONGODB_USERNAME=root
+      - SPRING_DATA_MONGODB_PASSWORD=password
+    ports:
+      - 8181:8181
+    depends_on:
+      - mongo
+    restart: on-failure
+
+  planner:
+    image: manloralm/planner:v0.1
+    hostname: planner
+    environment:
+      - TOPO_HOST=toposervice
+      - TOPO_PORT=8181
+      - GRPC_CLIENT_WEATHERSERVER_ADDRESS=static://weatherservice:9090      
+      - SPRING_CLOUD_STREAM_RABBIT_BINDER_NODES=rabbitmq:5672
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=root
+      - SPRING_RABBITMQ_PASSWORD=password      
+    depends_on:
+      - weatherservice
+      - toposervice
+      - rabbitmq
+    command: bash -c "
+      ./wait-for-it.sh weatherservice:9090 --timeout=0
+      ./wait-for-it.sh toposervice:8181 --timeout=0
+      ./wait-for-it.sh rabbitmq:5672 --timeout=0
+      java -jar planner.jar"
+    restart: on-failure
+
+          

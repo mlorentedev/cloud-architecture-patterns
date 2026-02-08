@@ -1,0 +1,1439 @@
+{
+	"info": {
+		"_postman_id": "946ea27b-efe1-4f61-9ad3-da899315173b",
+		"name": "App-conecta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41799875"
+	},
+	"item": [
+		{
+			"name": "Trabajador",
+			"item": [
+				{
+					"name": "obtenerTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/trabajadores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trabajadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/trabajadores/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trabajadores",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearTrabajador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Laura\",\r\n    \"apellidos\": \"Martínez López\",\r\n    \"email\": \"laura@example.com\",\r\n    \"telefono\": \"654321987\",\r\n    \"puesto\": \"Analista\",\r\n    \"area\": \"Marketing\",\r\n    \"empresaId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/trabajadores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trabajadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarTrabajador",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Pedro\",\r\n    \"apellidos\": \"Sánchez Vidal\",\r\n    \"email\": \"pedro.sanchez@techcorp.com\",\r\n    \"telefono\": \"666999000\",\r\n    \"puesto\": \"Jefe de Desarrollo\",\r\n    \"area\": \"Nuevo departamento\",\r\n    \"empresaId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/trabajadores/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trabajadores",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarTrabajador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/trabajadores/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"trabajadores",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profesor",
+			"item": [
+				{
+					"name": "listarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/profesores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profesores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profesores/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profesores",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearProfesor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"nombre\": \"Eva\",\r\n    \"apellidos\": \"Alman Ruiz\",\r\n    \"email\": \"eva@example.com\",\r\n    \"telefono\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profesores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profesores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarProfesor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Miguel\",\r\n    \"apellidos\": \"Campos\",\r\n    \"email\": \"miguel@example.com\",\r\n    \"telefono\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profesores/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profesores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarProfesor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/profesores/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profesores",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Empresa",
+			"item": [
+				{
+					"name": "listarTodas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/empresas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/empresas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"empresas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Label\",\r\n  \"direccion\": \"Isla de la cartuja, Sevilla\",\r\n  \"coordenadas\": \"1323242232\",\r\n  \"cif\": \"B12345678\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/empresas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarEmpresa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cif\": \"B12345678\",\r\n  \"direccion\": \"Calle Actualizada 456, Ciudad Ejemplo\",\r\n  \"coordenadas\": \"675748484\",\r\n  \"nombre\": \"Label S.A.\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/empresas/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"empresas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarEmpresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/empresas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"empresas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "obtenerTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"pepe.eje\",\r\n    \"password\": \"password456\",\r\n    \"role\": \"PROFESOR\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarUsuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"manu\",\r\n    \"password\": \"1234\",\r\n    \"role\": \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Familia Profesional",
+			"item": [
+				{
+					"name": "listarTodas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/familias-profesionales",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"familias-profesionales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/familias-profesionales/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"familias-profesionales",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearFamilia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ingenieria\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/familias-profesionales",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"familias-profesionales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarFamilia",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Mecatrónica\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/familias-profesionales/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"familias-profesionales",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarFamilia",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/familias-profesionales/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"familias-profesionales",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Curso",
+			"item": [
+				{
+					"name": "listaCursos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cursos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cursos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearCurso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Desarrollo Web Full Stack\",\r\n    \"horasEmpresa\": \"400\",\r\n    \"profesorId\": \"1\",\r\n    \"tituloId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/cursos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cursos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editarCurso",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"nombre\": \"AF2 Dual\",\n        \"horasEmpresa\": 250,\n        \"profesorId\": 2,\n        \"tituloId\": 2\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/cursos/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrarCurso",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/cursos/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"cursos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Titulo",
+			"item": [
+				{
+					"name": "listaTitulo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/titulos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"titulos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/titulos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"titulos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearTitulo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ingeniería en Software\",\r\n    \"duracion\": \"4 años\",\r\n    \"grado\": \"Grado\",\r\n    \"familiaProfesionalId\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/titulos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"titulos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editarTitulo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ingeniería de Teleco \",\r\n    \"duracion\": \"3 \",\r\n    \"grado\": \"Grado \",\r\n    \"familiaProfesionalId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/titulos/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"titulos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrarTitulo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/titulos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"titulos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Convocatoria",
+			"item": [
+				{
+					"name": "listaConvocatorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/convocatorias",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"convocatorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/convocatorias/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"convocatorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearConvocatoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cursoEscolar\": \"2024-2025\",\r\n    \"nombre\": \"Convocatoria 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/convocatorias",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"convocatorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editarConvocatoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cursoEscolar\": \"2024-2025\",\n    \"nombre\": \"Convocatoria editada\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/convocatorias/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"convocatorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrarConvocatoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/convocatorias/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"convocatorias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contactos",
+			"item": [
+				{
+					"name": "listaContactos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contactos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contactos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contactos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contactos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearContacto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"2024-01-16\",\r\n    \"canal\": \"Email\",\r\n    \"resumen\": \"Segundo contacto para programa dual\",\r\n    \"empresaId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contactos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contactos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editarContacto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"fecha\": \"2024-01-20\",\r\n    \"canal\": \"Teléfono y mail\",\r\n    \"resumen\": \"Seguimiento de solicitud\",\r\n    \"empresaId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contactos/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contactos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrarContacto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/contactos/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contactos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Demanda",
+			"item": [
+				{
+					"name": "listaDemandas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/demandas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/demandas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearDemanda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cantidadAlumnos\": 30,\r\n    \"requisitos\": \"Conocimientos avanzados en Java y Spring Boot\",\r\n    \"empresaId\": 1,\r\n    \"cursoId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/demandas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarDemanda",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cantidadAlumnos\": 50,\r\n    \"requisitos\": \"Conocimientos avanzados en Java y Spring Boot\",\r\n    \"empresaId\": 1,\r\n    \"cursoId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/demandas/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarDemanda",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/demandas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prototipo",
+			"item": [
+				{
+					"name": "obtenerContactosPorEmpresa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contactos/empresa/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contactos",
+								"empresa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerContactosPorFamiliaProfesional",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contactos/familia-profesional/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contactos",
+								"familia-profesional",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerContactosPorProfesor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/convocatoria",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"convocatoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerDemandasPorFamiliaProfesional",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/demandas/familia-profesional/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas",
+								"familia-profesional",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerDemandasPorProfesor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/demandas/profesor/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas",
+								"profesor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerDemandasPorEmpresaYCursoEscolar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/demandas/empresa/1?cursoEscolar=2024-2025",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"demandas",
+								"empresa",
+								"1"
+							],
+							"query": [
+								{
+									"key": "cursoEscolar",
+									"value": "2024-2025"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}

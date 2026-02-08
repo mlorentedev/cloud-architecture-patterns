@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: library
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: library
+  template:
+    metadata:
+      labels:
+        name: library
+    spec:
+      containers:
+      - name: library
+        image: manloralm/mca-4.3-p2:v1
+        ports:
+        - name: http
+          containerPort: 8881        
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://library-mysql.test:3306/test
+        - name: SPRING_DATASOURCE_USERNAME
+          value: root
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: pass          
+        - name: SERVER_PORT
+          value: "8881"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: library
+  namespace: test
+  labels:
+    name: library
+spec:
+  ports:
+  - port: 8881
+    targetPort: 8881
+    protocol: TCP
+    name: http
+  selector:
+    name: library
+  type: ClusterIP

@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "89d165fd-ef9f-4b52-b855-016e936bf605",
+		"name": "SCENARIO 1 (APPROVED)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24772546"
+	},
+	"item": [
+		{
+			"name": "1 - Create customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46NGRtMW5TM2NyM3Qu"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Pepe\",\n\t\"creditLimit\": 1000\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2- Create product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Product with reference PROD100 and 150 stockQuantity created\", function () {\r",
+							"  pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Product in the response\", function () {\r",
+							"    var responseJson = pm.response.json();                \r",
+							"    pm.collectionVariables.set(\"reference\", responseJson.reference);    \r",
+							"    pm.collectionVariables.set(\"name\", responseJson.name);    \r",
+							"    pm.expect(pm.response.text()).to.include(\"inventoryId\");    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\":\"Iphone 10\",\n   \"reference\": \"PROD101\",\n   \"stockQuantity\": 150\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Get product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/products/26513cbd-ea97-4ded-b812-37893fd621bf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"26513cbd-ea97-4ded-b812-37893fd621bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4 - Creaty city",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Sevilla\",\n\t\"codCity\": \"SVQ\",\n    \"deliveryQuantity\": 15\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/city",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"city"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5 - Create order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"orderTotal\": 100,\n\t\"customerId\": \"33d5cdc4-82af-42c3-bc2b-70df0ce69b3d\",\n\t\"productReference\": \"PROD101\",\n\t\"quantity\": 4,\n    \"codCity\": \"SVQ\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6 - Get order state",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/v1/orders/70a191fa-af4b-417b-a17a-f1de5174cd61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"70a191fa-af4b-417b-a17a-f1de5174cd61"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "customerId",
+			"value": ""
+		},
+		{
+			"key": "reference",
+			"value": ""
+		},
+		{
+			"key": "codCity",
+			"value": ""
+		},
+		{
+			"key": "orderId",
+			"value": ""
+		},
+		{
+			"key": "productName",
+			"value": ""
+		},
+		{
+			"key": "name",
+			"value": ""
+		},
+		{
+			"key": "inventoryId",
+			"value": ""
+		}
+	]
+}

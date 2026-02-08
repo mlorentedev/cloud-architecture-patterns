@@ -1,0 +1,1 @@
+UPDATE book SET book.detailed_price = book.price;
